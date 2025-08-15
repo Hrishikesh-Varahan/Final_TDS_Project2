@@ -17,19 +17,17 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application files
-COPY app.py .
-COPY index.html .
-COPY entrypoint.sh .
-
-# Copy environment file if it exists
-COPY .env* ./
+# Copy all application files
+COPY . .
 
 # Make entrypoint script executable
 RUN chmod +x entrypoint.sh
 
-# Expose the port the app runs on
-EXPOSE 8000
+# Use the port provided by Railway (default to 8000 locally)
+ENV PORT=8000
+
+# Expose port (optional for Railway, but good for local dev)
+EXPOSE $PORT
 
 # Command to run the application
 CMD ["./entrypoint.sh"]
