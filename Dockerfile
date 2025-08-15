@@ -20,4 +20,5 @@ ENV PORT=8000
 EXPOSE 8000
 
 # This is important: use 'sh -c' so $PORT expands
-CMD ["sh", "-c", "./entrypoint.sh"]
+CMD sh -c "uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}"
+
