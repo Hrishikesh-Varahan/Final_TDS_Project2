@@ -30,5 +30,6 @@ ENV PORT=8000
 EXPOSE $PORT
 
 # Command to run the application
-CMD ["sh", "./entrypoint.sh"]
+CMD sh ./entrypoint.sh
+
 
